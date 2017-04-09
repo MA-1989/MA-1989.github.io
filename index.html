@@ -1,282 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <title>_MA_&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding, Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="_MA_'s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="_MA_'s blog">
-<meta property="og:description" content="Coding, Learning">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="_MA_'s blog">
-<meta name="twitter:description" content="Coding, Learning">
-  
-    <link rel="alternate" href="/atom.xml" title="_MA_&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/style.css">
-  
-
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">_MA_&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
+  <body>
+    <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">_MA_&#39;s blog</a>
   </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
 </header>
-      <div class="outer">
-        <section id="main">
+
+    <main class="main">
+      <section class="posts">
   
-    <article id="post-RegExp引用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/17/RegExp引用/" class="article-date">
-  <time datetime="2017-03-17T13:29:32.000Z" itemprop="datePublished">2017-03-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/RegExp引用/">RegExp引用问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做些项目的同时在看一本书叫《一路编程》(《Learning to Program》作者Steven Foote)，打算学习下作者的思维、概念，最主要是参考他的职业，从顶级会计师事务所到LinkedIn软件工程师的转变（略相似…）。看到正则表达式这章时，对照书本上的代码进行测试：<br>var userName = prompt(“Hello what\’s your name? “);<br>var phoneNumber = prompt(‘Hello ‘ + userName + ‘, what\’s your phone number? ‘);<br>var phoneNumberPattern = /(?:1-)?(?(\d{3})[-)]\d{3}-\d{4}/;<br>var phoneMatches = phoneNumberPattern.exec(phoneNumber);<br>var areaCode = phoneMatches[1];<br>var userLocation = kbValues.areaCodes[areaCode];<br>var output = ‘Hello, ‘ + userName + ‘!’;<br>if (phoneNumberPattern.test(phoneNumber)) {<br>  output = output+//do something<br>} else {<br>  output = output + ‘That phone number is invalid: ‘ + phoneNumber;<br>}<br>document.body.innerHTML = output;</p>
-<p>测试输错电话号码的情况，当输错电话号码时，chrome开发者工具就出现错误了“Uncaught TypeError: Cannot read property ‘1’ of null at prompt.js:6”，后续的代码也都没有运行下去。对照着错误的信息，搜索了正则的相关资料，自行修改一下代码：<br>var userName = prompt(“Hello what\’s your name? “);<br>var phoneNumber = prompt(‘Hello ‘ + userName + ‘, what\’s your phone number? ‘);<br>var phoneNumberPattern = /(?:1-)?(?(\d{3})[-)]\d{3}-\d{4}/;<br>var phoneMatches = phoneNumberPattern.exec(phoneNumber);<br>if (phoneMatches !== null) {<br>  var areaCode = phoneMatches[1];<br>} else {<br>  var areaCode = 0;<br>}<br>…<br>这时就算输错电话号码，后续代码也可以照常运行，网页也有相关的提示输出了。看了大半部分，这本书中还是有些印刷错误的，但正如之前所讲，最主要还是学习作者的一个思维的转变。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/RegExp引用/" data-id="cj0dx8uk60001akvirpt84hvz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RegExp/">RegExp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-my-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/05/my-first-blog/" class="article-date">
-  <time datetime="2017-03-05T07:31:10.000Z" itemprop="datePublished">2017-03-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/my-first-blog/">my-first-blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这边的博客也搭建好,终于可以发布了！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/05/my-first-blog/" data-id="cj0dx8uk80002akvi0fp3pbpz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/05/hello-world/" class="article-date">
-  <time datetime="2017-03-05T07:13:22.860Z" itemprop="datePublished">2017-03-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/05/hello-world/" data-id="cj0dx8uk10000akvid73lfvfa" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/03/17/RegExp引用/">RegExp引用问题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/05/my-first-blog/">my-first-blog</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/05/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+    <article class="post">
+      <div class="post-title">
+        <a class="post-title-link" href="/2017/04/09/Begin/">Begin</a>
+      </div>
+      <div class="post-content">
         
       </div>
-      <footer id="footer">
+      <div class="post-meta">
+        <span class="post-time">2017-04-09</span>
+      </div>
+    </article>
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 _MA_<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+    <article class="post">
+      <div class="post-title">
+        <a class="post-title-link" href="/2017/03/17/RegExp引用/">RegExp引用问题</a>
+      </div>
+      <div class="post-content">
+        
+      </div>
+      <div class="post-meta">
+        <span class="post-time">2017-03-17</span>
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-title">
+        <a class="post-title-link" href="/2017/03/05/my-first-blog/">my-first-blog</a>
+      </div>
+      <div class="post-content">
+        
+      </div>
+      <div class="post-meta">
+        <span class="post-time">2017-03-05</span>
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-title">
+        <a class="post-title-link" href="/2017/03/05/hello-world/">Hello World</a>
+      </div>
+      <div class="post-content">
+        
+      </div>
+      <div class="post-meta">
+        <span class="post-time">2017-03-05</span>
+      </div>
+    </article>
+  
+</section>
+
+
+
+    </main>
+
+    <footer>
+    <p>Powered By <a href="https://hexo.io/" target="blank">Hexo</a></p>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
+  </body>
 </html>
